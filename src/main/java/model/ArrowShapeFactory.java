@@ -4,8 +4,6 @@ import javafx.scene.shape.Shape;
 
 public class ArrowShapeFactory {
 	Shape shape;
-	Arrow arrowToDraw;
-	
 	
 	public enum arrows {
 		redArrow, 
@@ -14,8 +12,7 @@ public class ArrowShapeFactory {
 	public Shape getArrow(arrows arrow, double xBegin, double yBegin, double xEnd, double yEnd) {
 		switch(arrow) {
 		case redArrow:
-			arrowToDraw = new ArrowSimpleRed(xBegin,yBegin,xEnd,yEnd);
-			shape = arrowToDraw.drawArrow();
+			shape = null;
 			break;
 		case blackArrow:
 			shape = null;
