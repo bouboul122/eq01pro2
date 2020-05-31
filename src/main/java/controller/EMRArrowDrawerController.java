@@ -18,14 +18,14 @@ import javafx.scene.shape.Shape;
 import model.AccumulationPower;
 import model.ArrowState;
 import model.PowerSource;
-import model.ShapeEMRFactory;
+import model.ShapeState;
 import model.State;
 
 public class EMRArrowDrawerController {
 	
 	State state;
 	Dragboard db;
-	ClipboardContent content;
+	ClipboardContent content = new ClipboardContent();
 	
 	PowerSource powerSource = new PowerSource(0,0,"#98FB98", "#008000");
 	Shape powerSourceShape = powerSource.createShape();
@@ -54,6 +54,7 @@ public class EMRArrowDrawerController {
 	{
 		System.out.println("Initialising");
 		shapeMenu.setExpandedPane(powerShapes);
+		state = new ShapeState();
 		System.out.println(powerShapes.isExpanded());
 		
 		//Adding dans les VBox
@@ -70,7 +71,6 @@ public class EMRArrowDrawerController {
 		        db = powerSourceShape.startDragAndDrop(TransferMode.ANY);
 		        
 		        /* Put a string on a dragboard */
-		        content = new ClipboardContent();
 		        content.putString("PowerSource");
 		        db.setContent(content);	
 		        
@@ -110,6 +110,36 @@ public class EMRArrowDrawerController {
 		});
 		
 		//Manque la fonction drop//
+		
+		drawingBoard.setOnDragDropped(new EventHandler<DragEvent>() {
+		    public void handle(DragEvent event) {
+		        /* data dropped */
+		        /* if there is a string data on dragboard, read it and use it */
+		        boolean success = false;
+		        if (db.hasString()) {
+		        	if (content.getString().equals("PowerSource")) {
+		        		state.setElement("PowerSource");
+		        		state.setxBegin(event.getX());
+		        		state.setyBegin(event.getY());
+		        		Shape newPower = state.drawShape();
+		        		drawingBoard.getChildren().add(newPower);
+		        	} else if(content.getString().equals("AccumulationPower")) {
+		        		state.setElement("AccumulationPower");
+		        		state.setxBegin(event.getX());
+		        		state.setyBegin(event.getY());
+		        		Shape newAccumulation = state.drawShape();
+		        		drawingBoard.getChildren().add(newAccumulation);
+		        	}
+
+		           success = true;
+		        }
+		        /* let the source know whether the string was successfully 
+		         * transferred and used */
+		        event.setDropCompleted(success);
+		        
+		        event.consume();
+		     }
+		});
 	}
 	
 	@FXML
@@ -126,8 +156,25 @@ public class EMRArrowDrawerController {
 		else if (arrowShapes.isExpanded()) {
 			shapeMenu.setExpandedPane(powerShapes);
 			stateLabel.setText("State: Power Shapes");
+			state = new ShapeState();
 		}
 	}
+	
+	@FXML
+	public void goToPowerState()
+	{
+		state = new ShapeState();
+		System.out.println("State: Shape State");
+	}
+	
+	@FXML
+	public void goToArrowState()
+	{
+		state = new ArrowState();
+		System.out.println("State: Arrow State");
+	}
+	
+
 	
 	
 	
