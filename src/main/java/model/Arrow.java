@@ -16,6 +16,6 @@ public abstract class Arrow {
 		this.yEnd = yEnd;
 	}
 	
-	public abstract Shape drawArrow(double xBegin, double yBegin, double xEnd, double yEnd);
+	public abstract Shape drawArrow();
 	
 }
