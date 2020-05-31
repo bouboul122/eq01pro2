@@ -20,6 +20,7 @@ public class PowerSource extends ShapeEMR{
 		ellipse.setRadiusY(15);
 		ellipse.setFill(Color.web(this.mainColor));
 		ellipse.setStroke(Color.web(this.borderColor));
+		
 		return ellipse;
 	}
 

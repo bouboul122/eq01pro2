@@ -11,7 +11,7 @@ public class ArrowState implements State{
 	double xEnd;
 	double yEnd;
 	
-	String color;
+	String element;
 	
 	public double getxBegin() {
 		return xBegin;
@@ -45,18 +45,24 @@ public class ArrowState implements State{
 		this.yEnd = yEnd;
 	}
 	
-	public void setColor(String color) {
-		this.color = color;
+	public void setElement(String color) {
+		this.element = color;
 	}
 	
+
 	public Shape drawShape() {
 		Shape arrow;
-		if (color.equals("Red")) {
+		if (element.equals("Red")) {
 			arrow = arrowShapeFactory.getArrow(ArrowShapeFactory.arrows.redArrow, xBegin, yBegin, xEnd, yEnd);
 		} else {
 			arrow = arrowShapeFactory.getArrow(ArrowShapeFactory.arrows.blackArrow, xBegin, yBegin, xEnd, yEnd);
 		}
 		return arrow;
+	}
+	
+	@Override
+	public String toString() {
+		return "Arrow State";
 	}
 
 }
