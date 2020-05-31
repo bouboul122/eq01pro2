@@ -10,7 +10,7 @@ public class EMRArrowDrawer extends Application {
 	
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/eq01pro1.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/EMRArrowDrawerView.fxml"));
 
         Scene scene = new Scene(root);
 
