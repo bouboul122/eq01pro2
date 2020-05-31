@@ -8,6 +8,10 @@ public abstract class ShapeEMR {
 	double yCoordinate;
 	String mainColor;
 	String borderColor;
+	double [] topAnchor;
+	double [] bottomAnchor;
+	double [] rightAnchor;
+	double [] leftAnchor;
 	
 	ShapeEMR (double xCoordinate, double yCoordinate, String mainColor, String borderColor)
 	{

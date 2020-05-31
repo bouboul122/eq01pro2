@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.ArrayList;
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -26,6 +28,8 @@ public class EMRArrowDrawerController {
 	State state;
 	Dragboard db;
 	ClipboardContent content = new ClipboardContent();
+	
+	ArrayList<Shape> listForme = new ArrayList<Shape>();
 	
 	PowerSource powerSource = new PowerSource(0,0,"#98FB98", "#008000");
 	Shape powerSourceShape = powerSource.createShape();
@@ -123,12 +127,14 @@ public class EMRArrowDrawerController {
 		        		state.setyBegin(event.getY());
 		        		Shape newPower = state.drawShape();
 		        		drawingBoard.getChildren().add(newPower);
+		        		listForme.add(newPower);
 		        	} else if(content.getString().equals("AccumulationPower")) {
 		        		state.setElement("AccumulationPower");
 		        		state.setxBegin(event.getX());
 		        		state.setyBegin(event.getY());
 		        		Shape newAccumulation = state.drawShape();
 		        		drawingBoard.getChildren().add(newAccumulation);
+		        		listForme.add(newAccumulation);
 		        	}
 
 		           success = true;
@@ -140,8 +146,10 @@ public class EMRArrowDrawerController {
 		        event.consume();
 		     }
 		});
+		
+		
 	}
-	
+	/*
 	@FXML
 	public void changeState()
 	{
@@ -159,7 +167,7 @@ public class EMRArrowDrawerController {
 			state = new ShapeState();
 		}
 	}
-	
+	*/
 	@FXML
 	public void goToPowerState()
 	{
@@ -175,7 +183,7 @@ public class EMRArrowDrawerController {
 	}
 	
 
-	
+	@FXML
 	
 	
 

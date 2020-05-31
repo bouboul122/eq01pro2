@@ -21,6 +21,11 @@ public class PowerSource extends ShapeEMR{
 		ellipse.setFill(Color.web(this.mainColor));
 		ellipse.setStroke(Color.web(this.borderColor));
 		
+		this.topAnchor = new double[] {this.xCoordinate,this.yCoordinate - ellipse.getRadiusY()};
+		this.bottomAnchor = new double[] {this.xCoordinate,this.yCoordinate + ellipse.getRadiusY()};
+		this.leftAnchor = new double[] {this.xCoordinate - ellipse.getRadiusX(),this.yCoordinate};
+		this.rightAnchor = new double[] {this.xCoordinate + ellipse.getRadiusX(),this.yCoordinate};
+		
 		return ellipse;
 	}
 
