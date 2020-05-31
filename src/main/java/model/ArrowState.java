@@ -50,8 +50,8 @@ public class ArrowState implements State{
 	}
 	
 
-	public Shape drawShape() {
-		Shape arrow;
+	public ShapeEMR drawShape() {
+		ShapeEMR arrow;
 		if (element.equals("Red")) {
 			arrow = arrowShapeFactory.getArrow(ArrowShapeFactory.arrows.redArrow, xBegin, yBegin, xEnd, yEnd);
 		} else {

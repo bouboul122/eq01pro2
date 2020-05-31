@@ -7,7 +7,7 @@ public interface State {
 	
 	public void setElement(String element);
 	
-	public Shape drawShape();
+	public ShapeEMR drawShape();
 	
 	public void setxBegin(double xCoord);
 	public void setyBegin(double yCoord);

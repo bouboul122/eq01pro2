@@ -14,7 +14,7 @@ public class ShapeState implements State{
 	ShapeFactory shapeFactory = new ShapeFactory();
 
 	@Override
-	public Shape drawShape() {
+	public ShapeEMR drawShape() {
 		if (element.equals("PowerSource")) {
 			return shapeFactory.getShape(ShapeFactory.eshape.sourcePower, xBegin, yBegin, "#98FB98",  "#008000");
 		} else if (element.contentEquals("AccumulationPower")) {

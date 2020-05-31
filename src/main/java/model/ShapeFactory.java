@@ -9,15 +9,17 @@ public class ShapeFactory {
 		accumulationPower,
 	};
 	
-	public Shape getShape(eshape element, double xCoord, double yCoord, String mainColor, String borderColor)
+	public ShapeEMR getShape(eshape element, double xCoord, double yCoord, String mainColor, String borderColor)
 	{
-		Shape shape;
+		
+		ShapeEMR shape;
+		//Shape shape;
 		switch(element) {
 		case sourcePower:
-			shape = (new PowerSource(xCoord, yCoord, mainColor, borderColor)).createShape();	
+			shape = (new PowerSource(xCoord, yCoord, mainColor, borderColor));//.createShape();	
 			break;
 		case accumulationPower:
-			shape = (new AccumulationPower(xCoord, yCoord, mainColor, borderColor)).createShape();
+			shape = (new AccumulationPower(xCoord, yCoord, mainColor, borderColor));//.createShape();
 			break;
 		default:
 			shape = null;
