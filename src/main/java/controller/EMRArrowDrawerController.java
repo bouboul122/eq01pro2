@@ -1,7 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
-
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
@@ -113,7 +111,6 @@ public class EMRArrowDrawerController {
 		    }
 		});
 		
-		//Manque la fonction drop//
 		
 		drawingBoard.setOnDragDropped(new EventHandler<DragEvent>() {
 		    public void handle(DragEvent event) {
@@ -127,14 +124,12 @@ public class EMRArrowDrawerController {
 		        		state.setyBegin(event.getY());
 		        		Shape newPower = state.drawShape();
 		        		drawingBoard.getChildren().add(newPower);
-		        		listForme.add(newPower);
 		        	} else if(content.getString().equals("AccumulationPower")) {
 		        		state.setElement("AccumulationPower");
 		        		state.setxBegin(event.getX());
 		        		state.setyBegin(event.getY());
 		        		Shape newAccumulation = state.drawShape();
 		        		drawingBoard.getChildren().add(newAccumulation);
-		        		listForme.add(newAccumulation);
 		        	}
 
 		           success = true;
@@ -146,8 +141,6 @@ public class EMRArrowDrawerController {
 		        event.consume();
 		     }
 		});
-		
-		
 	}
 	/*
 	@FXML
@@ -176,6 +169,13 @@ public class EMRArrowDrawerController {
 	}
 	
 	@FXML
+	public void goToPowerState()
+	{
+		state = new ShapeState();
+		System.out.println("State: Shape State");
+	}
+	
+	@FXML
 	public void goToArrowState()
 	{
 		state = new ArrowState();
@@ -183,7 +183,7 @@ public class EMRArrowDrawerController {
 	}
 	
 
-	@FXML
+	
 	
 	
 
