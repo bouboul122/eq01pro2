@@ -16,13 +16,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 import model.AccumulationPower;
+import model.ArrowShapeFactory;
 import model.ArrowState;
-import model.DoubleBlackArrow;
+import model.RedArrow;
 import model.PowerSource;
 import model.ShapeEMR;
 import model.ShapeState;
@@ -65,10 +64,12 @@ public class EMRArrowDrawerController {
 	
 	public void initialize()
 	{
-		DoubleBlackArrow arrow = new DoubleBlackArrow(300, 300, 350, 300);
-		Shape arrowToDraw = arrow.drawArrow();
+		//RedArrow arrow = new RedArrow(300, 300, 350, 350, "#FF0000", "#FF0000");
+		//Shape arrowShape = arrow.createShape();
 		
-		drawingBoard.getChildren().add(arrowToDraw);
+		//Shape arrow = arrowFactory.getArrow(ArrowShapeFactory.arrows.redArrow, 300, 300, 350, 350).createShape();
+		
+		//drawingBoard.getChildren().add(state.drawShape().createShape());
 		
 		System.out.println("Initialising");
 		shapeMenu.setExpandedPane(powerShapes);
@@ -127,8 +128,6 @@ public class EMRArrowDrawerController {
 		    }
 		});
 		
-		//Manque la fonction drop//
-		
 		drawingBoard.setOnDragDropped(new EventHandler<DragEvent>() {
 		    public void handle(DragEvent event) {
 		    	ShapeEMR shape;
@@ -168,26 +167,51 @@ public class EMRArrowDrawerController {
 									second = shape;
 									System.out.println("Draw a line");
 									Line line = new Line();
-									if (first.getxCoordinate() < second.getxCoordinate()) {
+									if(first.getyCoordinate() > second.getyCoordinate() && (first.getyCoordinate()-second.getyCoordinate() > 30)) {
+										System.out.println("First Top second bottom");
+										double[] secondBottomAnchor = second.getBottomAnchor();
+										double[] firstTopAnchor = first.getTopAnchor();									
+										state.setElement("Red");
+										state.setxBegin(firstTopAnchor[0]);
+										state.setyBegin(firstTopAnchor[1]);
+										state.setxEnd(secondBottomAnchor[0]);
+										state.setyEnd(secondBottomAnchor[1]);
+										drawingBoard.getChildren().add(state.drawShape().createShape());
+										
+									} else if(first.getyCoordinate() < second.getyCoordinate() && second.getyCoordinate()-first.getyCoordinate() > 30) {
+										System.out.println("First bottom second top");
+										double[] secondTopAnchor = second.getTopAnchor();
+										double[] firstBottomAnchor = first.getBottomAnchor();
+										state.setElement("Red");
+										state.setxBegin(firstBottomAnchor[0]);
+										state.setyBegin(firstBottomAnchor[1]);
+										state.setxEnd(secondTopAnchor[0]);
+										state.setyEnd(secondTopAnchor[1]);
+										drawingBoard.getChildren().add(state.drawShape().createShape());
+										
+									} else if (first.getxCoordinate() < second.getxCoordinate()) {
 										System.out.println("First right second left");
 										double[] secondLeftAnchor = second.getLeftAnchor();
 										double[] firstRightAnchor = first.getRightAnchor();
-										line.setStartX(firstRightAnchor[0]);
-										line.setStartY(firstRightAnchor[1]);
-										line.setEndX(secondLeftAnchor[0]);
-										line.setEndY(secondLeftAnchor[1]);
-										drawingBoard.getChildren().add(line);
-									}
-									else if(first.getxCoordinate() > second.getxCoordinate()) {
+										state.setElement("Red");
+										state.setxBegin(firstRightAnchor[0]);
+										state.setyBegin(firstRightAnchor[1]);
+										state.setxEnd(secondLeftAnchor[0]);
+										state.setyEnd(secondLeftAnchor[1]);
+										drawingBoard.getChildren().add(state.drawShape().createShape());
+										
+									} else if(first.getxCoordinate() > second.getxCoordinate()) {
 										System.out.println("First left second right");
-										double[] secondLeftAnchor = second.getLeftAnchor();
-										double[] firstRightAnchor = first.getRightAnchor();
-										line.setStartX(firstRightAnchor[0]);
-										line.setStartY(firstRightAnchor[1]);
-										line.setEndX(secondLeftAnchor[0]);
-										line.setEndY(secondLeftAnchor[1]);
-										drawingBoard.getChildren().add(line);
-										}
+										double[] secondRightAnchor = second.getRightAnchor();
+										double[] firstLeftAnchor = first.getLeftAnchor();
+										state.setElement("Red");
+										state.setxBegin(firstLeftAnchor[0]);
+										state.setyBegin(firstLeftAnchor[1]);
+										state.setxEnd(secondRightAnchor[0]);
+										state.setyEnd(secondRightAnchor[1]);
+										drawingBoard.getChildren().add(state.drawShape().createShape());
+									} 
+									
 									firstConfirmed = false;
 									secondConfirmed = false;
 								}
@@ -240,10 +264,4 @@ public class EMRArrowDrawerController {
 		state = new ArrowState();
 		System.out.println("State: Arrow State");
 	}
-	
-
-	
-	
-	
-
 }

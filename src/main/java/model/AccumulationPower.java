@@ -33,8 +33,8 @@ public class AccumulationPower extends ShapeEMR{
 		shape.setFill(Color.web(this.mainColor));
 		shape.setStroke(Color.web(this.borderColor));
 		
-		this.topAnchor = new double[] {this.xCoordinate,this.yCoordinate - element.getHeight()};
-		this.bottomAnchor = new double[] {this.xCoordinate,this.yCoordinate + element.getHeight()};
+		this.topAnchor = new double[] {this.xCoordinate + element.getWidth()/2,this.yCoordinate};
+		this.bottomAnchor = new double[] {this.xCoordinate + element.getWidth()/2,this.yCoordinate + element.getHeight()};
 		this.leftAnchor = new double[] {this.xCoordinate,this.yCoordinate + element.getHeight()/2};
 		this.rightAnchor = new double[] {this.xCoordinate + element.getWidth(),this.yCoordinate + element.getHeight()/2};
 		
