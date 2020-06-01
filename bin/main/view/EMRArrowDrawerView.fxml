@@ -13,8 +13,9 @@
    <top>
       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <items>
-          <Button fx:id="stateButton" mnemonicParsing="false" onAction="#changeState" text="State" />
             <Label fx:id="stateLabel" text="State: PowerShapes" />
+            <Button fx:id="redArrowButton" mnemonicParsing="false" onAction="#drawRed" text="Red Arrow" />
+            <Button fx:id="blackArrowButton" mnemonicParsing="false" onAction="#drawBlack" text="Black Arrow" />
         </items>
       </ToolBar>
    </top>

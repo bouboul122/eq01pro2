@@ -41,6 +41,7 @@ public class EMRArrowDrawerController {
 	
 	boolean firstConfirmed = false;
 	boolean secondConfirmed = false;
+	String arrowColor;
 	ShapeEMR first;
 	ShapeEMR second;
 	
@@ -60,6 +61,10 @@ public class EMRArrowDrawerController {
 	VBox arrowVBox;
 	@FXML
 	Pane drawingBoard;
+	@FXML
+	Button redArrowButton;
+	@FXML
+	Button blackArrowButton;
 	
 	
 	public void initialize()
@@ -233,28 +238,12 @@ public class EMRArrowDrawerController {
 		});
 	}
 	
-	@FXML
-	public void changeState()
-	{
-		System.out.println("Changing state!");
-		System.out.println(powerShapes.isExpanded());
-		if (powerShapes.isExpanded()) {
-			shapeMenu.setExpandedPane(arrowShapes);
-			stateLabel.setText("State: Arrows");
-			state = new ArrowState();
-			System.out.println(state);
-		}
-		else if (arrowShapes.isExpanded()) {
-			shapeMenu.setExpandedPane(powerShapes);
-			stateLabel.setText("State: Power Shapes");
-			state = new ShapeState();
-		}
-	}
 	
 	@FXML
 	public void goToPowerState()
 	{
 		state = new ShapeState();
+		stateLabel.setText("State: Shape State");
 		System.out.println("State: Shape State");
 	}
 	
@@ -262,6 +251,23 @@ public class EMRArrowDrawerController {
 	public void goToArrowState()
 	{
 		state = new ArrowState();
+		stateLabel.setText("State: Arrow State");
 		System.out.println("State: Arrow State");
+	}
+	
+	@FXML
+	public void drawRed() {
+		if (arrowShapes.isExpanded()) {
+		stateLabel.setText("State: Red Arrow");
+		arrowColor = "Red";
+		}
+	}
+	
+	@FXML
+	public void drawBlack() {
+		if (arrowShapes.isExpanded()) {
+			stateLabel.setText("State: Black Arrow");
+			arrowColor = "Black";
+		}
 	}
 }
