@@ -35,8 +35,8 @@ public class AccumulationPower extends ShapeEMR{
 		
 		this.topAnchor = new double[] {this.xCoordinate,this.yCoordinate - element.getHeight()};
 		this.bottomAnchor = new double[] {this.xCoordinate,this.yCoordinate + element.getHeight()};
-		this.leftAnchor = new double[] {this.xCoordinate - element.getWidth() ,this.yCoordinate};
-		this.rightAnchor = new double[] {this.xCoordinate + element.getWidth(),this.yCoordinate};
+		this.leftAnchor = new double[] {this.xCoordinate,this.yCoordinate + element.getHeight()/2};
+		this.rightAnchor = new double[] {this.xCoordinate + element.getWidth(),this.yCoordinate + element.getHeight()/2};
 		
 		return shape;
 	}

@@ -16,6 +16,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 import model.AccumulationPower;
 import model.ArrowState;
@@ -38,8 +41,8 @@ public class EMRArrowDrawerController {
 	
 	boolean firstConfirmed = false;
 	boolean secondConfirmed = false;
-	Shape first;
-	Shape second;
+	ShapeEMR first;
+	ShapeEMR second;
 	
 	@FXML
 	TitledPane powerShapes;
@@ -72,7 +75,7 @@ public class EMRArrowDrawerController {
 	    
 		powerVBox.getChildren().add(powerSourceShape);
 		powerVBox.getChildren().add(accPowerShape);
-		
+
 		powerSourceShape.setOnDragDetected(new EventHandler<MouseEvent>() {
 		    public void handle(MouseEvent event) {
 		        /* drag was detected, start a drag-and-drop gesture*/
@@ -152,12 +155,25 @@ public class EMRArrowDrawerController {
 						public void handle(MouseEvent event) {
 							if (arrowShapes.isExpanded()) {
 								if (!firstConfirmed) {
-									first = shapeToDraw;
+									first = shape;
 									firstConfirmed = !firstConfirmed;
 									System.out.println("First changed");
 								} else {
-									second = shapeToDraw;
+									second = shape;
 									System.out.println("Draw a line");
+									Line line = new Line();
+									if (first.getxCoordinate() < second.getxCoordinate()) {
+										System.out.println("First right second left");
+										double[] secondLeftAnchor = second.getLeftAnchor();
+										double[] firstRightAnchor = first.getRightAnchor();
+										line.setStartX(firstRightAnchor[0]);
+										line.setStartY(firstRightAnchor[1]);
+										line.setEndX(secondLeftAnchor[0]);
+										line.setEndY(secondLeftAnchor[1]);
+										drawingBoard.getChildren().add(line);
+									}
+									firstConfirmed = false;
+									secondConfirmed = false;
 								}
 							
 								System.out.println(event.getX());

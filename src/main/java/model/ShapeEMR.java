@@ -29,6 +29,54 @@ public abstract class ShapeEMR {
 
 
 
+	public double[] getTopAnchor() {
+		return topAnchor;
+	}
+
+
+
+	public void setTopAnchor(double[] topAnchor) {
+		this.topAnchor = topAnchor;
+	}
+
+
+
+	public double[] getBottomAnchor() {
+		return bottomAnchor;
+	}
+
+
+
+	public void setBottomAnchor(double[] bottomAnchor) {
+		this.bottomAnchor = bottomAnchor;
+	}
+
+
+
+	public double[] getRightAnchor() {
+		return rightAnchor;
+	}
+
+
+
+	public void setRightAnchor(double[] rightAnchor) {
+		this.rightAnchor = rightAnchor;
+	}
+
+
+
+	public double[] getLeftAnchor() {
+		return leftAnchor;
+	}
+
+
+
+	public void setLeftAnchor(double[] leftAnchor) {
+		this.leftAnchor = leftAnchor;
+	}
+
+
+
 	public void setxCoordinate(int xCoordinate) {
 		this.xCoordinate = xCoordinate;
 	}
