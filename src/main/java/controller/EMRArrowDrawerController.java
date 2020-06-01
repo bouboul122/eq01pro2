@@ -22,6 +22,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 import model.AccumulationPower;
 import model.ArrowState;
+import model.DoubleBlackArrow;
 import model.PowerSource;
 import model.ShapeEMR;
 import model.ShapeState;
@@ -64,6 +65,11 @@ public class EMRArrowDrawerController {
 	
 	public void initialize()
 	{
+		DoubleBlackArrow arrow = new DoubleBlackArrow(300, 300, 350, 300);
+		Shape arrowToDraw = arrow.drawArrow();
+		
+		drawingBoard.getChildren().add(arrowToDraw);
+		
 		System.out.println("Initialising");
 		shapeMenu.setExpandedPane(powerShapes);
 		state = new ShapeState();
@@ -172,6 +178,16 @@ public class EMRArrowDrawerController {
 										line.setEndY(secondLeftAnchor[1]);
 										drawingBoard.getChildren().add(line);
 									}
+									else if(first.getxCoordinate() > second.getxCoordinate()) {
+										System.out.println("First left second right");
+										double[] secondLeftAnchor = second.getLeftAnchor();
+										double[] firstRightAnchor = first.getRightAnchor();
+										line.setStartX(firstRightAnchor[0]);
+										line.setStartY(firstRightAnchor[1]);
+										line.setEndX(secondLeftAnchor[0]);
+										line.setEndY(secondLeftAnchor[1]);
+										drawingBoard.getChildren().add(line);
+										}
 									firstConfirmed = false;
 									secondConfirmed = false;
 								}

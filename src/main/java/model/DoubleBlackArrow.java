@@ -3,7 +3,6 @@ package model;
  
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Polyline;
@@ -17,7 +16,6 @@ public class DoubleBlackArrow extends Arrow{
 
     public DoubleBlackArrow(double xBegin, double yBegin, double xEnd, double yEnd) {
         super(xBegin, yBegin, xEnd, yEnd);
-            System.out.println("Allo");
     }
     
     final double ARROWHEAD_ANGLE = Math.toRadians(20);
@@ -56,14 +54,9 @@ public class DoubleBlackArrow extends Arrow{
         
         Shape arrowHeadA = Shape.union(line, headA);
         //Shape arrowHeadAB = Shape.union(arrowHeadA, headB);
-        Circle circle = new Circle();
-        circle.setCenterX(xBegin);
-        circle.setCenterY(yBegin);
-        circle.setRadius(20);
         
         arrowHeadA.setStroke(Color.web("#000000"));
-        System.out.println("Allo");
-        return circle;
+        return arrowHeadA;
         
         
     }
