@@ -22,10 +22,10 @@ public class BlackArrowDouble extends Arrow{
 	       double x2 = xEnd + 6 * Math.cos(angle + Math.PI/6);
 	       double y2 = yEnd + 6 * Math.sin(angle + Math.PI/6);
 	       
-	       double x3 = xCoordinate + 6 * Math.cos(angle - Math.PI/6);
-	       double y3 = yCoordinate + 6 * Math.sin(angle - Math.PI/6);
-	       double x4 = xCoordinate + 6 * Math.cos(angle + Math.PI/6);
-	       double y4 = yCoordinate + 6 * Math.sin(angle + Math.PI/6);
+	       double x3 = xCoordinate - 6 * Math.cos(angle - Math.PI/6);
+	       double y3 = yCoordinate - 6 * Math.sin(angle - Math.PI/6);
+	       double x4 = xCoordinate - 6 * Math.cos(angle + Math.PI/6);
+	       double y4 = yCoordinate - 6 * Math.sin(angle + Math.PI/6);
 	       
 	       Line mainLine = new Line();
 	       Line littleLine1 = new Line();
