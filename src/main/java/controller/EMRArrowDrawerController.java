@@ -172,7 +172,7 @@ public class EMRArrowDrawerController {
 								} else {
 									second = shape;
 									System.out.println("Draw a line");
-									Line line = new Line();
+									
 									if(first.getyCoordinate() > second.getyCoordinate() && (first.getyCoordinate()-second.getyCoordinate() > 30)) {
 										System.out.println("First Top second bottom");
 										double[] secondBottomAnchor = second.getBottomAnchor();
