@@ -15,7 +15,7 @@ public class ArrowShapeFactory {
 			shape = new RedArrow(xBegin, yBegin, xEnd, yEnd, "#FF0000", "#FF0000");
 			break;
 		case blackArrow:
-			shape = null;
+			shape = new RedArrow(xBegin, yBegin, xEnd, yEnd, "#000000", "#000000");
 			break;
 		default:
 			shape = null;		

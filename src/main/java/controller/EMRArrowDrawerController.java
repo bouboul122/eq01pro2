@@ -21,6 +21,7 @@ import javafx.scene.shape.Shape;
 import model.AccumulationPower;
 import model.ArrowShapeFactory;
 import model.ArrowState;
+import model.BlackArrowDouble;
 import model.RedArrow;
 import model.PowerSource;
 import model.ShapeEMR;
@@ -69,12 +70,12 @@ public class EMRArrowDrawerController {
 	
 	public void initialize()
 	{
+
+		
 		//RedArrow arrow = new RedArrow(300, 300, 350, 350, "#FF0000", "#FF0000");
 		//Shape arrowShape = arrow.createShape();
 		
 		//Shape arrow = arrowFactory.getArrow(ArrowShapeFactory.arrows.redArrow, 300, 300, 350, 350).createShape();
-		
-		//drawingBoard.getChildren().add(state.drawShape().createShape());
 		
 		System.out.println("Initialising");
 		shapeMenu.setExpandedPane(powerShapes);
@@ -176,7 +177,7 @@ public class EMRArrowDrawerController {
 										System.out.println("First Top second bottom");
 										double[] secondBottomAnchor = second.getBottomAnchor();
 										double[] firstTopAnchor = first.getTopAnchor();									
-										state.setElement("Red");
+										state.setElement(arrowColor);
 										state.setxBegin(firstTopAnchor[0]);
 										state.setyBegin(firstTopAnchor[1]);
 										state.setxEnd(secondBottomAnchor[0]);
@@ -187,7 +188,7 @@ public class EMRArrowDrawerController {
 										System.out.println("First bottom second top");
 										double[] secondTopAnchor = second.getTopAnchor();
 										double[] firstBottomAnchor = first.getBottomAnchor();
-										state.setElement("Red");
+										state.setElement(arrowColor);
 										state.setxBegin(firstBottomAnchor[0]);
 										state.setyBegin(firstBottomAnchor[1]);
 										state.setxEnd(secondTopAnchor[0]);
@@ -198,7 +199,7 @@ public class EMRArrowDrawerController {
 										System.out.println("First right second left");
 										double[] secondLeftAnchor = second.getLeftAnchor();
 										double[] firstRightAnchor = first.getRightAnchor();
-										state.setElement("Red");
+										state.setElement(arrowColor);
 										state.setxBegin(firstRightAnchor[0]);
 										state.setyBegin(firstRightAnchor[1]);
 										state.setxEnd(secondLeftAnchor[0]);
@@ -209,7 +210,7 @@ public class EMRArrowDrawerController {
 										System.out.println("First left second right");
 										double[] secondRightAnchor = second.getRightAnchor();
 										double[] firstLeftAnchor = first.getLeftAnchor();
-										state.setElement("Red");
+										state.setElement(arrowColor);
 										state.setxBegin(firstLeftAnchor[0]);
 										state.setyBegin(firstLeftAnchor[1]);
 										state.setxEnd(secondRightAnchor[0]);
