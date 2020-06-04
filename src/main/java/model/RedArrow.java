@@ -17,9 +17,7 @@ public class RedArrow extends Arrow{
     public RedArrow(double xBegin, double yBegin, double xEnd, double yEnd, String mainColor, String borderColor) {
         super(xBegin, yBegin, xEnd, yEnd, mainColor, borderColor);
     }
-    
-    //final double ARROWHEAD_ANGLE = Math.toRadians(20);
-    //final double ARROWHEAD_LENGTH = 10;    
+     
     @Override
     public Shape createShape() {
     	
